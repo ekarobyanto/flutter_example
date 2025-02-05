@@ -4,7 +4,9 @@ import 'package:flutter_example/src/modules/http_networking/http_networking.dart
 import 'package:flutter_example/src/modules/layout_responsiveness/layout_responsive_page.dart';
 import 'package:flutter_example/src/modules/local_storage/local_storage.dart';
 import 'package:flutter_example/src/modules/navigation/navigation.dart';
+import 'package:flutter_example/src/modules/state_management/providers/user_provider.dart';
 import 'package:flutter_example/src/modules/state_management/state_management.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -34,7 +36,15 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Flutter Basic Examples"),
+        title: Row(
+          children: [
+            const Expanded(child: Text("Flutter Basic Examples")),
+            Consumer<UserProvider>(
+              builder: (context, provider, child) =>
+                  Text(provider.user?.name ?? ""),
+            ),
+          ],
+        ),
       ),
       body: ListView.builder(
         shrinkWrap: true,
