@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  static const List<Map<String, dynamic>> modules = [
+  static List<Map<String, dynamic>> modules = [
     {
       "title": "Responsive UI",
       "page": LayoutResponsivePage(),
@@ -29,7 +29,11 @@ class HomePage extends StatelessWidget {
       "route": "/local-storage"
     },
     {"title": "Konsumsi API", "page": ConsumeApi(), "route": "/consume-api"},
-    {"title": "Animation", "page": AnimationPages(), "route": "/animation"},
+    {
+      "title": "Animation",
+      "page": AnimatedWidgetsExample(),
+      "route": "/animation"
+    },
   ];
 
   @override

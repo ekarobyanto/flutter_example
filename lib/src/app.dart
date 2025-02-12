@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         "/state-management": (context) => const StateManagement(),
         "/local-storage": (context) => const LocalStorage(),
         "/consume-api": (context) => const ConsumeApi(),
-        "/animation": (context) => const AnimationPages(),
+        "/animation": (context) => AnimatedWidgetsExample(),
       },
       home: const HomePage(),
     );
