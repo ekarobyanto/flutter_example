@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_example/src/modules/http_networking/model/post.dart';
+import 'package:flutter_example/src/modules/http_networking/post.dart';
 import 'package:flutter_example/src/modules/http_networking/request/http_request.dart';
 
 class ConsumeApi extends StatefulWidget {
@@ -27,16 +28,6 @@ class _ConsumeApiScreenState extends State<ConsumeApi> {
       _showSnackbar('Failed to load posts');
     }
     setState(() => _isLoading = false);
-  }
-
-  Future<void> _addPost() async {
-    try {
-      await addPost('New Post', 'This is a newly added post.');
-      _fetchPosts(); // Refresh data
-      _showSnackbar('Post added successfully');
-    } catch (e) {
-      _showSnackbar('Failed to add post');
-    }
   }
 
   Future<void> _deletePost(int id) async {
@@ -158,28 +149,25 @@ class _ConsumeApiScreenState extends State<ConsumeApi> {
                 return ListTile(
                   title: Text(post.title),
                   subtitle: Text(post.body),
-                  trailing: PopupMenuButton<String>(
-                    onSelected: (value) {
-                      if (value == 'delete') {
+                  trailing: IconButton(
+                      onPressed: () {
                         _deletePost(post.id);
-                      } else if (value == 'update' || value == 'patch') {
-                        _showUpdatePostModal(post, value);
-                      }
-                    },
-                    itemBuilder: (context) => [
-                      const PopupMenuItem(
-                          value: 'update', child: Text('Update Post')),
-                      const PopupMenuItem(
-                          value: 'patch', child: Text('Patch Post')),
-                      const PopupMenuItem(
-                          value: 'delete', child: Text('Delete Post')),
-                    ],
-                  ),
+                      },
+                      icon: Icon(Icons.delete)),
                 );
               },
             ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _addPost,
+        onPressed: () async {
+          bool res = await Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AddPostView(),
+              ));
+          if (res) {
+            _fetchPosts();
+          }
+        },
         child: const Icon(Icons.add),
       ),
     );

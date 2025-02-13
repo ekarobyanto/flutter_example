@@ -73,7 +73,7 @@ class _AnimatedWidgetsExampleState extends State<AnimatedWidgetsExample> {
           // AnimatedOpacity
           AnimatedOpacity(
             opacity: _isVisible ? 1.0 : 0.0,
-            duration: Duration(seconds: 10),
+            duration: Duration(seconds: 2),
             child: Container(
               width: 100.0,
               height: 100.0,

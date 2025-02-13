@@ -5,10 +5,12 @@ import 'package:http/http.dart';
 
 // ignore: constant_identifier_names
 const String BASE_URL = 'https://jsonplaceholder.typicode.com';
+// const String BASE_URL = 'https://go-test-post.aswaja-nulife.com';
 
 Future<List<Post>> getPosts() async {
   Uri url = Uri.parse('$BASE_URL/posts');
   Response response = await get(url);
+  print(response.request?.headers?.toString());
   if (response.statusCode != 200) {
     throw Exception('Failed to load posts');
   }

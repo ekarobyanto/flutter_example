@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_example/src/modules/animations/animations.dart';
+import 'package:flutter_example/src/modules/http_networking/demo/get.dart';
 import 'package:flutter_example/src/modules/http_networking/http_networking.dart';
 import 'package:flutter_example/src/modules/layout_responsiveness/layout_responsive_page.dart';
 import 'package:flutter_example/src/modules/local_storage/local_storage.dart';
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
         "/navigation": (context) => const NavigationPage(),
         "/state-management": (context) => const StateManagement(),
         "/local-storage": (context) => const LocalStorage(),
-        "/consume-api": (context) => const ConsumeApi(),
+        "/consume-api": (context) => PostPage2(),
+        // "/consume-api": (context) => PostPage(),
         "/animation": (context) => AnimatedWidgetsExample(),
       },
       home: const HomePage(),
