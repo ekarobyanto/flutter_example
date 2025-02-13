@@ -37,13 +37,13 @@ jobs:
         run: mv build/app/outputs/flutter-apk/app-release.apk assets/release/app-release-${{ env.COMMIT_HASH }}.apk
 
       - name: Upload Artifact (APK)
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Flutter APK ${{ env.COMMIT_HASH }}
           path: assets/release/app-release-${{ env.COMMIT_HASH }}.apk
 
       - name: Upload Artifact (AAB)
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Flutter AAB ${{ env.COMMIT_HASH }}
           path: assets/release/app-release-${{ env.COMMIT_HASH }}.aab
